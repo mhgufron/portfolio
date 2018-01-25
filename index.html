@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js">
+    </script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <section class="content">
+            <header>
+                <a class="fa fa-bars menu-icon" href="#menu"></a>
+                <div class="wrapper" id="menu">
+                    <ul class="menu">
+                        <a class="fa fa-close close-icon" href="#menu"></a>
+                        <li class="link-menu"><a href="home">Home</a></li>
+                        <li class="link-menu"><a href="about">About</a></li>
+                        <li class="link-menu"><a href="skills">Skills</a></li>
+                        <li class="link-menu"><a href="portfolio">Portfolio</a></li>
+                        <li class="link-menu"><a href="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </header>
+            <section class="main">
+                <div class="image">
+                    <img src="assets/images/logo.png" alt="logo" class="logo"/>
+                </div>
+                <h1 class="caption">Hi, Im Gufron <div>
+                    Web Backend Developer
+                </div> in QODR</h1>
+                <div class="btn start">
+                    <span class="link-menu">
+                        <a href="contact" class="hire">Yes, Im available for hire</a>
+                    </span>
+                </div>
+            </section>
+            <footer>
+                <p>Copy Right By Muhammad Gufron</p>
+            </footer>
+        </section>
+
+        <section class=""></section>
+    </div>
+    <script type="text/javascript">
+    $('a').click(function(e) {
+        e.preventDefault();
+    });
+
+    $("a[href='#menu']").click(function(e) {
+        e.preventDefault();
+        $('#menu').fadeToggle('slow')
+    })
+
+    $('.link-menu').click(function(e){
+        e.preventDefault();
+
+        var link = $(this).children().attr("href");
+        $.ajax({
+            url: 'http://localhost/APP/portfolio/'+link+'.html',
+            type: 'GET',
+            dataType: 'html'
+        })
+        .done(function(data) {
+            $('section .main').html(data);
+        })
+        .fail(function() {
+            $('section .main').html(
+            '<div class="header">'+
+                '<h1 class="notfound">404</h1>'+
+            '</div>'+
+            '<div class="content-main">'+
+                '<div>'+
+                    '<h2 class="notfound">Oops this page not found...</h2>'+
+                '</div>'+
+            '</div>');
+        })
+    })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.menu {
+    margin: 0;
+    padding-left: 0em;
+    text-align: center;
+    margin-top: 1.8em;
+}
+
+.menu li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.menu li a {
+    font-size: 1.3em;
+    text-decoration: none;
+    padding: 1.34em 0.6em;
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 1s;
+}
+
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: background-color 1s;
+}

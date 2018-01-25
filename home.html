@@ -1,0 +1,37 @@
+<div class="image">
+    <img src="assets/images/logo.png" alt="logo" class="logo"/>
+</div>
+<h1 class="caption">Hi, Im Gufron <div>
+    Web Backend Developer
+</div> in QODR</h1>
+<div class="btn start">
+    <span class="link-menu">
+        <a href="contact" class="hire">Yes, Im available for hire</a>
+    </span>
+</div>
+<script type="text/javascript">
+$('.link-menu').click(function(e){
+    e.preventDefault();
+
+    var link = $(this).children().attr("href");
+    $.ajax({
+        url: 'http://localhost/APP/portfolio/'+link+'.html',
+        type: 'GET',
+        dataType: 'html'
+    })
+    .done(function(data) {
+        $('section .main').html(data);
+    })
+    .fail(function() {
+        $('section .main').html(
+        '<div class="header">'+
+            '<h1 class="notfound">404</h1>'+
+        '</div>'+
+        '<div class="content-main">'+
+            '<div class="">'+
+                '<h2 class="notfound">Oops this page not found...</h2>'+
+            '</div>'+
+        '</div>');
+    })
+})
+</script>
